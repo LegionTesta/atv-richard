@@ -1,6 +1,7 @@
 #include "omp.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 void atv1() {
 
@@ -38,6 +39,39 @@ void atv1() {
 
 }
 
+void atv2(){
+ 
+  int s;
+
+  while(scanf("%d", &s) != EOF){
+      double v[s];
+      double r = 0;
+      double desvio = 0;
+      double media;
+      double t = 0;
+      for(int x = 0; x < s; x++){
+          scanf("%lf", &v[x]);
+      }
+      
+    #pragma pragma omp parallel for reduction(+:r)
+    {
+        for(int x = 0; x < s; x++){
+            r += v[x];
+        }
+    }
+    media = r / s;
+    printf("%lf\n", media);
+    #pragma pragma omp parallel for reduction(+:t)
+    {
+        for(int x = 0; x < s; x++){
+            t += pow((v[x] - media), 2);
+        }
+    }
+    desvio = sqrt(t/s);
+    printf("%lf\n", desvio);  
+  }   
+}
+
 void main() {
-    atv1();
+    atv2();
 }
