@@ -126,8 +126,8 @@ void atv4(){
 
     while(scanf("%d", &s) != EOF){
         double v[s];
-        double min = 9999;
-        double max = 0;
+        double menor = 9999;
+        double maior = 0;
 
         //le os elementos
         for(int x = 0; x < s; x++){
@@ -137,22 +137,22 @@ void atv4(){
         #pragma pragma omp parallel for reduction(min:r)
         {
             for(int x = 0; x < s; x++){
-                min = min(min, v[x]);
+                menor = min(menor, v[x]);
             }   
         }
         #pragma pragma omp parallel for reduction(max:r)
         {
             for(int x = 0; x < s; x++){
-                max = max(max, v[x]);
+                maior = max(maior, v[x]);
             }  
         }
-        printf("maior: %lf\nmenor: %lf\n", max, min);
+        printf("maior: %lf\nmenor: %lf\n", maior, menor);
 
   }  
 
 }
 
-atv5(){
+void atv5(){
 
     //algoritmo para mostrar primos de 0 ate n utilizando crivo de erastoteles
     int n;
