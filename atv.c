@@ -162,13 +162,13 @@ void atv5(){
     double initialtime = omp_get_wtime();
      
     //se primos[x] == 1 entao eh primo
-    char primos[n+1]; 
+    char* primos = (char *) malloc(n * sizeof(char)); 
 
     #pragma omp parallel
     {
         
         #pragma omp for
-        for(int x = 0; x < n; x++){
+        for(int x = 0; x <= n; x++){
             primos[x] = 1;
         }
     }
@@ -194,13 +194,15 @@ void atv5(){
 
     printf("tempo: %lf", finaltime - initialtime);
   
+    /*
     // printa os primos
     for (int p = 2; p <= n; p++) 
        if (primos[p]) 
           printf("%d\n", p); 
+    */
 } 
   
 
 void main() {
-    atv3();
+    atv5();
 }
