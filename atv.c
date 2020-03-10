@@ -158,6 +158,8 @@ void atv5(){
     int n;
 
     scanf("%d", &n);
+
+    double initialtime = omp_get_wtime();
      
     //se primos[x] == 1 entao eh primo
     char primos[n+1]; 
@@ -188,6 +190,9 @@ void atv5(){
         } 
     }
 
+    double finaltime = omp_get_wtime();
+
+    printf("tempo: %lf", finaltime - initialtime);
   
     // printa os primos
     for (int p = 2; p <= n; p++) 
