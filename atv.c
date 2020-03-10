@@ -151,7 +151,7 @@ void atv4(){
   }  
 
 }
-/*
+
 void atv5(){
 
     //algoritmo para mostrar primos de 0 ate n utilizando crivo de erastoteles
@@ -160,7 +160,7 @@ void atv5(){
     scanf("%d", &n);
      
     //se primos[x] == 1 entao eh primo
-    int primos[n+1]; 
+    char primos[n+1]; 
 
     #pragma omp parallel
     {
@@ -174,7 +174,7 @@ void atv5(){
 
     #pragma omp parallel
     {
-        #pragma omp for
+        
         for (int p = 2; (p * p) <= n; p++){ 
             
             if (primos[p] == 1) 
@@ -195,7 +195,7 @@ void atv5(){
           printf("%d\n", p); 
 } 
   
-*/
+
 void main() {
     atv3();
 }
